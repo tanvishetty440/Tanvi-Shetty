@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #0f574e;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #ffd700;
+        }
+
+        header p {
+            margin: 0.5rem 0;
+            color: #d3d3d3;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section {
+            margin: 1rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #0f574e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form input, .form textarea, .form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form input:focus, .form textarea:focus, .form select:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        .form button {
+            background: #ffd700;
+            color: #0f574e;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form button:hover {
+            background: #ffcc00;
+            transform: translateY(-3px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .resume-template {
+            background: #0f574e;
+            padding: 2rem;
+            border-radius: 15px;
+            color: #ffffff;
+            text-align: left;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-in-out;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .resume-template h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .resume-template p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .resume-template span {
+            display: inline-block;
+            margin-right: 0.5rem;
+            padding: 0.2rem 0.5rem;
+            background: #ffd700;
+            color: #0f574e;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #0f574e;
+            margin-top: 2rem;
+            color: #d3d3d3;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+
+            .form input, .form textarea, .form select {
+                font-size: 0.9rem;
+            }
+
+            .form button {
+                font-size: 1rem;
+            }
+        }
+    #edit-details, #download-resume {
+        background: #0f574e;
+        color: #ffffff;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        margin: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #edit-details:hover, #download-resume:hover {
+        background: #ffd700;
+        color: #0f574e;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Advanced Resume Builder</h1>
+            <p>Create, Review, and Download Professional Resumes with Ease</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="form-section">
+            <h2>Enter Your Details</h2>
+            <form id="resume-form" class="form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+
+                <label for="summary">Professional Summary:</label>
+                <textarea id="summary" name="summary" placeholder="Write a short summary about yourself..." required></textarea>
+
+                <label for="skills">Skills:</label>
+                <textarea id="skills" name="skills" placeholder="List your skills separated by commas..." required></textarea>
+
+                <label for="experience">Work Experience:</label>
+                <textarea id="experience" name="experience" placeholder="Describe your previous work experience..." required></textarea>
+
+                <label for="education">Education:</label>
+                <textarea id="education" name="education" placeholder="Provide your educational background..." required></textarea>
+
+                <label for="template">Choose a Template:</label>
+                <select id="template" name="template">
+                    <option value="classic">Classic</option>
+                    <option value="modern">Modern</option>
+                    <option value="minimalist">Minimalist</option>
+                </select>
+
+                <button type="button" id="generate-preview">Generate Preview</button>
+            </form>
+        </section>
+
+        <section id="preview-section" class="hidden">
+            <h2>Your Resume Preview</h2>
+            <div id="resume-preview" class="resume-template">
+                <!-- Resume preview will be dynamically populated -->
+            </div>
+            <button id="edit-details">Edit Details</button>
+            <button id="download-resume">Download PDF</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Advanced Resume Builder. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("generate-preview").addEventListener("click", () => {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const summary = document.getElementById("summary").value.trim();
+            const skills = document.getElementById("skills").value.trim();
+            const experience = document.getElementById("experience").value.trim();
+            const education = document.getElementById("education").value.trim();
+
+            if (!name || !email || !phone || !summary || !skills || !experience || !education) {
+                alert("Please fill out all fields before generating a preview.");
+                return;
+            }
+
+            const resumePreview = document.getElementById("resume-preview");
+            resumePreview.innerHTML = `
+                <h3>${name}</h3>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <h3>Professional Summary</h3>
+                <p>${summary}</p>
+                <h3>Skills</h3>
+                <p>${skills.split(',').map(skill => `<span>${skill.trim()}</span>`).join(' ')}</p>
+                <h3>Work Experience</h3>
+                <p>${experience}</p>
+                <h3>Education</h3>
+                <p>${education}</p>
+            `;
+
+            document.getElementById("form-section").classList.add("hidden");
+            document.getElementById("preview-section").classList.remove("hidden");
+        });
+
+        document.getElementById("edit-details").addEventListener("click", () => {
+            document.getElementById("form-section").classList.remove("hidden");
+            document.getElementById("preview-section").classList.add("hidden");
+        });
+
+        document.getElementById("download-resume").addEventListener("click", () => {
+            alert("Download feature will be available soon.");
+        });
+    </script>
+</body>
+</html>
